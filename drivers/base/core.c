@@ -101,6 +101,9 @@ const char *dev_driver_string(const struct device *dev)
 	 * so be careful about accessing it.  dev->bus and dev->class should
 	 * never change once they are set, so they don't need special care.
 	 */
+	if(dev == NULL)
+		return "NULL";
+	
 	drv = ACCESS_ONCE(dev->driver);
 	return drv ? drv->name :
 			(dev->bus ? dev->bus->name :
